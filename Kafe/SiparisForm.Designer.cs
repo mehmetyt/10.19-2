@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
@@ -37,6 +38,10 @@
             cboMasaNo = new ComboBox();
             BtnMasaTasi = new Button();
             dgvDetaylar = new DataGridView();
+            Column1 = new DataGridViewTextBoxColumn();
+            Column2 = new DataGridViewTextBoxColumn();
+            Column3 = new DataGridViewTextBoxColumn();
+            Column4 = new DataGridViewTextBoxColumn();
             lblMasaNo = new Label();
             label5 = new Label();
             lblOdemeTutari = new Label();
@@ -104,6 +109,7 @@
             btnDetayEkle.TabIndex = 4;
             btnDetayEkle.Text = "Ekle";
             btnDetayEkle.UseVisualStyleBackColor = true;
+            btnDetayEkle.Click += btnDetayEkle_Click;
             // 
             // cboMasaNo
             // 
@@ -129,14 +135,58 @@
             // 
             // dgvDetaylar
             // 
+            dgvDetaylar.AllowUserToAddRows = false;
+            dgvDetaylar.AllowUserToDeleteRows = false;
             dgvDetaylar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            dgvDetaylar.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvDetaylar.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             dgvDetaylar.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvDetaylar.Columns.AddRange(new DataGridViewColumn[] { Column1, Column2, Column3, Column4 });
             dgvDetaylar.Location = new Point(7, 74);
+            dgvDetaylar.MultiSelect = false;
             dgvDetaylar.Name = "dgvDetaylar";
+            dgvDetaylar.ReadOnly = true;
+            dgvDetaylar.RowHeadersVisible = false;
             dgvDetaylar.RowHeadersWidth = 51;
             dgvDetaylar.RowTemplate.Height = 29;
+            dgvDetaylar.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvDetaylar.Size = new Size(556, 408);
             dgvDetaylar.TabIndex = 8;
+            dgvDetaylar.KeyDown += dgvDetaylar_KeyDown;
+            // 
+            // Column1
+            // 
+            Column1.DataPropertyName = "UrunAd";
+            Column1.HeaderText = "Ürün Ad";
+            Column1.MinimumWidth = 6;
+            Column1.Name = "Column1";
+            Column1.ReadOnly = true;
+            // 
+            // Column2
+            // 
+            Column2.DataPropertyName = "BirimFiyati";
+            dataGridViewCellStyle1.Format = "c2";
+            Column2.DefaultCellStyle = dataGridViewCellStyle1;
+            Column2.HeaderText = "Birim Fiyat";
+            Column2.MinimumWidth = 6;
+            Column2.Name = "Column2";
+            Column2.ReadOnly = true;
+            // 
+            // Column3
+            // 
+            Column3.DataPropertyName = "Adet";
+            Column3.HeaderText = "Adet";
+            Column3.MinimumWidth = 6;
+            Column3.Name = "Column3";
+            Column3.ReadOnly = true;
+            // 
+            // Column4
+            // 
+            Column4.DataPropertyName = "TutarTL";
+            Column4.HeaderText = "Tutar";
+            Column4.MinimumWidth = 6;
+            Column4.Name = "Column4";
+            Column4.ReadOnly = true;
             // 
             // lblMasaNo
             // 
@@ -186,6 +236,7 @@
             btnSiparisIptal.TabIndex = 9;
             btnSiparisIptal.Text = "Sipariş İptal";
             btnSiparisIptal.UseVisualStyleBackColor = false;
+            btnSiparisIptal.Click += btnSiparisIptal_Click;
             // 
             // btnOdemeAl
             // 
@@ -199,6 +250,7 @@
             btnOdemeAl.TabIndex = 10;
             btnOdemeAl.Text = "Ödeme Al";
             btnOdemeAl.UseVisualStyleBackColor = false;
+            btnOdemeAl.Click += btnOdemeAl_Click;
             // 
             // btnAnasayfayaDon
             // 
@@ -212,6 +264,7 @@
             btnAnasayfayaDon.TabIndex = 11;
             btnAnasayfayaDon.Text = "Anasayfaya Dön";
             btnAnasayfayaDon.UseVisualStyleBackColor = false;
+            btnAnasayfayaDon.Click += btnAnasayfayaDon_Click;
             // 
             // SiparisForm
             // 
@@ -260,5 +313,9 @@
         private Button btnSiparisIptal;
         private Button btnOdemeAl;
         private Button btnAnasayfayaDon;
+        private DataGridViewTextBoxColumn Column1;
+        private DataGridViewTextBoxColumn Column2;
+        private DataGridViewTextBoxColumn Column3;
+        private DataGridViewTextBoxColumn Column4;
     }
 }
